@@ -15,7 +15,7 @@ try {
 const getUrlFunction = () => {
   if (process.env.REACT_APP_STATIC_SEARCH_HOST) {
     return accountHostKey => {
-      return `${process.env.REACT_APP_STATIC_SEARCH_HOST}/api/as/v1/`;
+      return `${process.env.REACT_APP_STATIC_SEARCH_HOST}/api/as/v1/public/`;
     };
   }
 };

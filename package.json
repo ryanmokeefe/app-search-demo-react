@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.10.0",
     "debug": "^4.1.1",
     "ora": "^2.1.0",
     "package-stream": "^3.0.3",
@@ -22,5 +23,17 @@
   },
   "devDependencies": {
     "install-peers": "^1.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
