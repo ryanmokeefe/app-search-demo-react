@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './index.css';
+
+// import * as SwiftypeAppSearch from "swiftype-app-search-javascript";
+// const client = SwiftypeAppSearch.createClient({
+//   hostIdentifier: process.env.REACT_APP_HOST_IDENTIFIER,
+//   apiKey: process.env.REACT_APP_SEARCH_KEY,
+//   engineName: "node-modules"
+// });
+// We can query for anything -- <code>foo</code> is our example.
+// const query = "foo";
+// const options = {};
+// client.search(query, options)
+//   .then(resultList => console.log(resultList))
+//   .catch(error => console.log(error))
 
 class App extends Component {
   render() {

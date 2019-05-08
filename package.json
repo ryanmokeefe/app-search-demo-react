@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "debug": "^4.1.1",
     "ora": "^2.1.0",
     "package-stream": "^3.0.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^3.0.0",
+    "swiftype-app-search-javascript": "^2.4.0",
     "swiftype-app-search-node": "^0.3.0"
   },
   "scripts": {
@@ -17,5 +19,8 @@
     "eject": "react-scripts eject",
     "init-data": "node scripts/init-data.js",
     "index-data": "node scripts/index-data.js"
+  },
+  "devDependencies": {
+    "install-peers": "^1.0.3"
   }
 }

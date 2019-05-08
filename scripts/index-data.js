@@ -21,12 +21,17 @@ const getUrlFunction = () => {
 };
 const SwiftypeAppSearchClient = require("swiftype-app-search-node");
 const accountHostKey = process.env.REACT_APP_HOST_IDENTIFIER;
-const apiKey = process.env.REACT_APP_PRIVATE_KEY;
+// const apiKey = process.env.REACT_APP_SEARCH_KEY;
+const apiKey = process.env.REACT_APP_API_KEY;
+
+// const engineName = "node-modules";
+
 const client = new SwiftypeAppSearchClient(
   accountHostKey,
   apiKey,
   getUrlFunction()
 );
+
 
 /*
   `client.indexDocuments` will only accept 100 documents at a time, so we index
