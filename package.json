@@ -5,6 +5,7 @@
   "dependencies": {
     "ajv": "^6.10.0",
     "debug": "^4.1.1",
+    "lodash": "^4.17.11",
     "ora": "^2.1.0",
     "package-stream": "^3.0.3",
     "react": "^16.4.2",

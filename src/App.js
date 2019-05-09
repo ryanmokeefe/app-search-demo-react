@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import './index.css';
 import * as SwiftypeAppSearch from "swiftype-app-search-javascript";
+import { debounce } from "lodash"; // Import debounce
+
 
 const client = SwiftypeAppSearch.createClient({
   hostIdentifier: process.env.REACT_APP_HOST_IDENTIFIER,
@@ -38,7 +40,7 @@ class App extends Component {
     )
   }
   // query method 
-  performQuery = queryString => {
+  performQuery = debounce(queryString => {
     client.search(queryString, {})
       .then(
         response => {
@@ -49,7 +51,8 @@ class App extends Component {
           console.log(`error: ${error}`);
         }
       );
-  };
+      //Debounce: wait 200ms before update/perform query
+  }, 300);
 
   render() {
     const {response, queryString} = this.state;
@@ -75,9 +78,17 @@ class App extends Component {
           </h2>
           {/* map results for name and disc */}
           {response.results.map(result => (
-            <div key={result.getRaw("id")}>
+            <div className="result-single" key={result.getRaw("id")}>
               <p>Name: {result.getRaw("name")}</p>
-              <p>Description: {result.getRaw("description")}</p>
+              {result.getRaw("description") &&
+                <p>Description: {result.getRaw("description")}</p>
+              }
+              {result.getRaw("homepage") &&
+                <p>Website: {result.getRaw("homepage")}</p> 
+              }
+              {result.getRaw("license") &&
+                <p>License: {result.getRaw("license")}</p>
+              }
             </div>
           ))}
         </div>
