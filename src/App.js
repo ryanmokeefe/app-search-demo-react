@@ -9,25 +9,40 @@ const client = SwiftypeAppSearch.createClient({
   engineName: "node-modules"
 });
 
-const query = "foo";
-const options = {};
-client.search(query, options)
-  .then(resultList => console.log(resultList))
-  .catch(error => console.log(error))
+// const query = "foo";
+// const options = {};
+// client.search(query, options)
+//   .then(resultList => console.log(resultList))
+//   .catch(error => console.log(error))
 
 class App extends Component {
   state = {
+    // updated via updateQuery()
+    queryString: "",
+    // updated via performQuery()
     response: null
   };
-  componentWillMount() {
-    this.performQuery("foo");
+  componentDidMount() {
+  // execute search
+    this.performQuery(this.state.queryString);
+  }
+  updateQuery= e => {
+    const queryString = e.target.value;
+    // save the user-entered string
+    this.setState(
+      { queryString },
+      () => {
+        // trigger new search
+        this.performQuery(queryString);
+      }
+    )
   }
   // query method 
   performQuery = queryString => {
     client.search(queryString, {})
       .then(
         response => {
-          console.log(response);
+          // console.log(response);
           this.setState({ response });
         },
         error => {
@@ -37,7 +52,7 @@ class App extends Component {
   };
 
   render() {
-    const {response} = this.state;
+    const {response, queryString} = this.state;
     if (!response) return null; 
   
       return (
@@ -46,6 +61,14 @@ class App extends Component {
             <h1 className="App-title">Node Module Search
             </h1>
           </header>
+           {/* search input box */}
+          <input
+          className="App-search-box"
+          type="text"
+          placeholder="Search for node modules"
+          value={queryString}
+          onChange={this.updateQuery}
+        />
           {/* total count of results */}
           <h2>
           {response.info.meta.page.total_results} Results
